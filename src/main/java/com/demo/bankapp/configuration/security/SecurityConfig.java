@@ -39,7 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(passwordEncoder);
+        DaoAuthenticationConfigurer<AuthenticationManagerBuilder, UserDetailsService> service =  auth.userDetailsService(userService);
+        service.passwordEncoder(passwordEncoder);
     }
 
 	@Bean
